@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.SequenceGenerator;
-import javax.swing.text.StringContent;
 
 @Entity
 public class Cancion {
