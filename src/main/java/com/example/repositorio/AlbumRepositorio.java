@@ -9,4 +9,5 @@ import com.example.dominio.Album;
 
 public interface AlbumRepositorio extends CrudRepository<Album, Integer>{
     List<Album> findAll();
+    Album findOne(Integer id_album);
 }

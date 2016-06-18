@@ -9,4 +9,5 @@ import com.example.dominio.Cancion;
 
 public interface CancionRepositorio extends CrudRepository<Cancion, Integer>{
     List<Cancion> findAll();
+    Cancion findOne(Integer id_cancion);
 }
