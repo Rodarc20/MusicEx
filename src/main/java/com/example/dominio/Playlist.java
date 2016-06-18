@@ -63,6 +63,14 @@ public class Playlist {
         return canciones;
     }
 
+    public void addCancion(Cancion cancion){//no se si debo hacerlos a travez de esto, o a travez  get canciones y a l resulado hacer esta operacion, revisar si funciona despues
+        this.canciones.add(cancion);
+    }
+
+    public void deleteCancion(Cancion cancion){
+        this.canciones.remove(cancion);
+    }
+
     public void setSeguidores(Integer seguidores) {
         this.seguidores = seguidores;
     }
@@ -77,5 +85,12 @@ public class Playlist {
 
     public Integer getPuntuacion() {
         return puntuacion;
+    }
+
+    public Playlist (){}
+
+    public Playlist (Usuario usuario, String titulo){
+        this.usuario = usuario;
+        this.titulo = titulo;
     }
 }
