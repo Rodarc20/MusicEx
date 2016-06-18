@@ -6,6 +6,7 @@ package com.example.servicio;
 import java.util.Date;
 
 public interface UsuarioService {
+    void crearPlaylist(Integer id_usuario, String titulo);
     void agregarUsuario(String username, String password, String email, String nombre, String apellido, Date fecha_nacimineto, String path_foto_perfil);
     void eliminarUsuario(Integer id_usuario);
 }

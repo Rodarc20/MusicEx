@@ -54,4 +54,8 @@ public class PlaylistServiceImpl implements PlaylistService{
         playlist.addCancion(cancion);
     }
 
+    @Override
+    public void eliminarCancionEnPlaylist(Integer id_playlist, Integer id_cancion){
+
+    }
 }

@@ -5,7 +5,9 @@ package com.example.servicio;
  */
 import java.util.Date;
 
+import com.example.dominio.Playlist;
 import com.example.dominio.Usuario;
+import com.example.repositorio.PlaylistRepositorio;
 import com.example.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
     UsuarioRepositorio usuarioRepositorio;
+    PlaylistRepositorio playlistRepositorio;
 
     @Autowired
     public UsuarioServiceImpl (UsuarioRepositorio ur){
@@ -38,5 +41,17 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public void eliminarUsuario(Integer id_usuario){
         usuarioRepositorio.delete(id_usuario);
+    }
+
+    @Override
+    public void crearPlaylist(Integer id_usuario, String titulo){
+        Playlist playlist = new Playlist();
+        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+        playlist.setTitulo(titulo);
+        playlist.setUsuario(usuario);
+        playlist.setSeguidores(0);
+        playlist.setPuntuacion(0);
+        playlistRepositorio.save(playlist);
+
     }
 }

@@ -5,6 +5,7 @@ package com.example.dominio;
  */
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Cancion {
@@ -19,6 +20,9 @@ public class Cancion {
     @ManyToOne
     @JoinColumn(name = "id_album")
     private Album album;
+
+    @ManyToMany (mappedBy = "canciones")
+    private Set<Playlist> playlists;
     //private Integer id_artista;//quiza no sea necesario
     private Integer duracion;
     private Integer numero_seguidores;
