@@ -21,6 +21,10 @@ public class Artista {
     private Integer seguidores;
     private Integer puntuacion;
 
+    public Integer getId_artista() {
+        return id_artista;
+    }
+
     public void setNombre(String nombre){
         this.nombre = nombre;
     }

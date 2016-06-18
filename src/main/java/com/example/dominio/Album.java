@@ -23,6 +23,11 @@ public class Album {
     private Integer puntuacion;
     //private genero; // este se debe con una tabla intermedia;
 
+
+    public Integer getId_album() {
+        return id_album;
+    }
+
     public void setTitulo(String titulo){
         this.titulo = titulo;
     }
@@ -30,16 +35,6 @@ public class Album {
     public String getTitulo(){
         return this.titulo;
     }
-
-    /*public void setId_artista(Integer id_artista){
-        this.id_artista = id_artista;
-    }
-
-    public Integer getId_artista(){
-
-        return this.id_artista;
-    }
-    */
 
     public void setArtista(Artista artista) {
         this.artista = artista;
