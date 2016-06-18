@@ -4,11 +4,7 @@ package com.example.dominio;
  * Created by rodrigo on 17/06/16.
  */
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 @Entity
 public class Cancion {
@@ -19,7 +15,10 @@ public class Cancion {
     private String titulo;
     private String path;
     private Integer numero;
-    private Integer id_album;
+    //private Integer id_album;
+    @ManyToOne
+    @JoinColumn(name = "id_album")
+    private Album album;
     //private Integer id_artista;//quiza no sea necesario
     private Integer duracion;
     private Integer numero_seguidores;
@@ -54,12 +53,20 @@ public class Cancion {
         return this.numero;
     }
 
-    public void setId_album(Integer id_album){
+    /*public void setId_album(Integer id_album){
         this.id_album = id_album;
     }
 
     public Integer getId_album(){
         return this.id_album;
+    }*/
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
+    public Album getAlbum() {
+        return album;
     }
 
     public void setDuracion(Integer duracion){
@@ -95,11 +102,11 @@ public class Cancion {
     }
     public Cancion(){}
 
-    public Cancion(String titulo, String path, Integer numero, Integer id_album, Integer duracion){
+    public Cancion(String titulo, String path, Integer numero, Album album, Integer duracion){
         this.titulo = titulo;
         this.path = path;
         this.numero = numero;
-        this.id_album = id_album;
+        this.album = album;
         this.duracion = duracion;
         this.numero_seguidores = 0;
         this.puntuacion = 0;

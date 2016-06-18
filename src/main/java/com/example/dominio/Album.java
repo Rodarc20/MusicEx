@@ -3,11 +3,7 @@ package com.example.dominio;
 /**
  * Created by rodrigo on 17/06/16.
  */
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,7 +13,10 @@ public class Album {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Album_ID_GENERATOR")
     private Integer id_album;
     private String titulo;
-    private Integer id_artista;
+    //private Integer id_artista;
+    @ManyToOne
+    @JoinColumn(name="id_artista")
+    private Artista artista;
     private String path_foto;
     private Date fecha;
     private Integer seguidores;
@@ -32,12 +31,22 @@ public class Album {
         return this.titulo;
     }
 
-    public void setId_artista(Integer id_artista){
+    /*public void setId_artista(Integer id_artista){
         this.id_artista = id_artista;
     }
 
     public Integer getId_artista(){
+
         return this.id_artista;
+    }
+    */
+
+    public void setArtista(Artista artista) {
+        this.artista = artista;
+    }
+
+    public Artista getArtista() {
+        return artista;
     }
 
     public void setPath_foto(String path_foto){
@@ -74,9 +83,17 @@ public class Album {
 
     public Album (){}
 
-    public Album (String titulo, Integer id_artista, String path_foto, Date fecha){
+    /*public Album (String titulo, Integer id_artista, String path_foto, Date fecha){
         this.titulo = titulo;
         this.id_artista = id_artista;
+        this.path_foto = path_foto;
+        this.fecha = fecha;
+        this.seguidores = 0;
+        this.puntuacion = 0;
+    }*/
+    public Album (String titulo, Artista artista, String path_foto, Date fecha){
+        this.titulo = titulo;
+        this.artista = artista;
         this.path_foto = path_foto;
         this.fecha = fecha;
         this.seguidores = 0;
