@@ -22,6 +22,7 @@ public class CancionServiceImpl implements CancionService{
         this.albumRepositorio = ar;
     }
 
+    @Transactional
     @Override
     public void agregarCancion(Integer id_album, String titulo, String path, Integer numero, Integer duracion){
         Album album = albumRepositorio.findOne(id_album);
