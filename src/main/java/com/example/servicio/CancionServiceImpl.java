@@ -43,4 +43,15 @@ public class CancionServiceImpl implements CancionService{
         cancionRepositorio.delete(id_cancion);
     }
 
+    @Override
+    public void incrementarSeguidores(Integer id_cancion){
+        Cancion cancion = cancionRepositorio.findOne(id_cancion);
+        cancion.setNumero_seguidores(cancion.getNumero_seguidores() + 1);
+        cancionRepositorio.save(cancion);
+    }
+
+    @Override
+    public void calcularPuntuacion(Integer id_cancion){
+        //calcular puntuacion, deberia tener un tabla puntuaciones
+    }
 }

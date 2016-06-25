@@ -51,4 +51,16 @@ public class AlbumServiceImpl implements AlbumService{
         albumRepositorio.delete(album);
     }
 
+    @Override
+    public void incrementarSeguidores(Integer id_album){
+        Album album = albumRepositorio.findOne(id_album);
+        album.setSeguidores(album.getSeguidores()+1);
+        albumRepositorio.save(album);
+    }
+
+    @Override
+    public void calcularPuntuacion(Integer id_album){
+        //tabla puntuaciones,no se si diferente o igual
+    }
+
 }

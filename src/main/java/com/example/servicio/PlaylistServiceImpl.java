@@ -56,6 +56,8 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     @Override
     public void eliminarCancionEnPlaylist(Integer id_playlist, Integer id_cancion){
-
+        Playlist playlist = playlistRepositorio.findOne(id_playlist);
+        Cancion cancion = cancionRepositorio.findOne(id_cancion);
+        playlist.deleteCancion(cancion);
     }
 }

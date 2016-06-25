@@ -44,6 +44,26 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
+    public void cambiarFotoPerfil(Integer id_usuario, String path_foto_perfil){
+        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+        String path_eliminar = usuario.getPath_foto_perfil();//deberia eliminar esta foto anterior, de mi base de datos, aun no se como trabajaremos las imagenes
+        usuario.setPath_foto_perfil(path_foto_perfil);
+        usuarioRepositorio.save(usuario);
+    }
+
+    @Override
+    public void cambiarPassword(Integer id_usuario, String password){
+        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+        usuario.setPassword(password);
+        usuarioRepositorio.save(usuario);
+    }
+    @Override
+    public void cambiarEmail(Integer id_usuario, String email){
+        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+        usuario.setEmail(email);
+        usuarioRepositorio.save(usuario);
+    }
+    /*@Override
     public void crearPlaylist(Integer id_usuario, String titulo){
         Playlist playlist = new Playlist();
         Usuario usuario = usuarioRepositorio.findOne(id_usuario);
@@ -53,5 +73,5 @@ public class UsuarioServiceImpl implements UsuarioService{
         playlist.setPuntuacion(0);
         playlistRepositorio.save(playlist);
 
-    }
+    }*/
 }

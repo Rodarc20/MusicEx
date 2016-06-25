@@ -35,4 +35,15 @@ public class ArtistaServiceImpl implements ArtistaService{
         artistaRepositorio.delete(id_artista);
     }
 
+    @Override
+    public void incrementarSeguidores(Integer id_artista){
+        Artista artista = artistaRepositorio.findOne(id_artista);
+        artista.setSeguidores(artista.getSeguidores()+1);
+        artistaRepositorio.save(artista);
+    }
+
+    @Override
+    public void calcularPuntuacion(Integer id_artista){
+        //calcular
+    }
 }
