@@ -1,29 +1,27 @@
 package com.example.dominio;
 
 /**
- * Created by rodrigo on 25/06/16.
+ * Created by rodrigo on 30/06/16.
  */
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
-public class Comentario {//Album
+public class Puntuacion {//cancion
     @Id
     @SequenceGenerator(name="Comentario_ID_GENERATOR", sequenceName="Comentario_ID_SEQ")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Comentario_ID_GENERATOR")
-    private Integer id_comentario;
+    private Integer id_puntuacion;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_album")
-    private Album album;
-
-    private String comentario;
+    @JoinColumn(name = "id_cancion")
+    private Cancion cancion;
     private Date fecha;
+    private Integer puntuacion;//0-10
 
     public void setUsuario(Usuario usuario){
         this.usuario = usuario;
@@ -33,20 +31,12 @@ public class Comentario {//Album
         return usuario;
     }
 
-    public void setAlbum(Album album){
-        this.album = album;
+    public void setCancion(Cancion cancion){
+        this.cancion = cancion;
     }
 
-    public Album getAlbum(){
-        return album;
-    }
-
-    public void setComentario(String comentario){
-        this.comentario = comentario;
-    }
-
-    public String getComentario(){
-        return comentario;
+    public Cancion getCancion(){
+        return cancion;
     }
 
     public void setFecha(Date fecha){
@@ -57,12 +47,21 @@ public class Comentario {//Album
         return fecha;
     }
 
-    public Comentario(){}
+    public void setPuntuacion(Integer puntuacion){
+        this.puntuacion = puntuacion;
+    }
 
-    public Comentario(Usuario usuario, Album album, String comentario, Date fecha){
+    public Integer getPuntuacion(){
+        return puntuacion;
+    }
+
+    public Puntuacion (){}
+
+    public Puntuacion(Usuario usuario, Cancion cancion, Integer puntuacion, Date fecha){
         this.usuario = usuario;
-        this.album = album;
-        this.comentario = comentario;
+        this.cancion = cancion;
+        this.puntuacion = puntuacion;
         this.fecha = fecha;
     }
+
 }
