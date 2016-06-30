@@ -7,6 +7,7 @@ import com.example.dominio.Album;
 import com.example.dominio.Cancion;
 import com.example.repositorio.AlbumRepositorio;
 import com.example.repositorio.CancionRepositorio;
+import com.example.repositorio.PuntuacionRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,11 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class CancionServiceImpl implements CancionService{
     CancionRepositorio cancionRepositorio;
     AlbumRepositorio albumRepositorio;
+    PuntuacionRepositorio puntuacionRepositorio;
 
     @Autowired
-    public CancionServiceImpl(CancionRepositorio cr, AlbumRepositorio ar){
+    public CancionServiceImpl(CancionRepositorio cr, AlbumRepositorio ar, PuntuacionRepositorio pr){
         this.cancionRepositorio = cr;
         this.albumRepositorio = ar;
+        this.puntuacionRepositorio = pr;
     }
 
     @Transactional
@@ -52,6 +55,9 @@ public class CancionServiceImpl implements CancionService{
 
     @Override
     public void calcularPuntuacion(Integer id_cancion){
+        Cancion cancion = cancionRepositorio.findOne(id_cancion);
+        cancion.setPuntuacion(puntuacionRepositorio.puntuacionCancion(cancion)/puntuacionRepositorio.cantidadPuntuacionesCancion(cancion));
+        cancionRepositorio.save(cancion);
         //calcular puntuacion, deberia tener un tabla puntuaciones
     }
 }
