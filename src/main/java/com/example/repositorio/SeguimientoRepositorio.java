@@ -7,11 +7,10 @@ import java.util.List;
 
 import com.example.dominio.Seguimiento;
 import com.example.dominio.Usuario;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface SeguimientoRepositorio extends CrudRepository<Seguimiento, Integer>{
     List<Seguimiento> findAll();
-    //@Query("SELECT s FROM Seguimiento s WHERE s.id_usuario1 = i")
-    //Seguimiento findOne();
+    Seguimiento findOne(Integer id_seguimiento);
+    Seguimiento findByUsuario1AndUsuario2(Usuario usuario1, Usuario usuario2);
 }

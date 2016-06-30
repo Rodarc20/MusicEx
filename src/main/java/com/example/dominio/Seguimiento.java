@@ -14,11 +14,11 @@ public class Seguimiento {//usuario1 sigue a usuario2, no visceversa
     private Integer id_seguimiento;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_usuario1")
     private Usuario usuario1;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_usuario2")
     private Usuario usuario2;
 
     private Date fecha;
