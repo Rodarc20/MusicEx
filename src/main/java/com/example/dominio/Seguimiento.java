@@ -54,4 +54,8 @@ public class Seguimiento {//usuario1 sigue a usuario2, no visceversa
         this.usuario2 = usuario2;
         this.fecha = fecha;
     }
+
+    public Integer getId_seguimiento() {
+        return id_seguimiento;
+    }
 }

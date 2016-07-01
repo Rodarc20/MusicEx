@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class SeguimientoServiceImpl implements SeguimientoService {
@@ -40,4 +41,14 @@ public class SeguimientoServiceImpl implements SeguimientoService {
     public void noSeguirUsuario(Integer id_seguimiento) {
         seguimientoRepositorio.delete(id_seguimiento);
     }
+
+    @Override
+    public List<Usuario> usuariosSeguidos(Integer id_usuario){
+        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+        return seguimientoRepositorio.findByUsuario1(usuario);
+    }
+    /*@Override
+    public List<Usuario> usuariosSeguidos(Usuario usuario){
+        return seguimientoRepositorio.findByUsuario1(usuario);
+    }*/
 }

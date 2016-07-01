@@ -64,4 +64,7 @@ public class Puntuacion {//cancion
         this.fecha = fecha;
     }
 
+    public Integer getId_puntuacion() {
+        return id_puntuacion;
+    }
 }
