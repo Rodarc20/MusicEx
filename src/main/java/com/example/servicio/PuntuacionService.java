@@ -6,5 +6,5 @@ package com.example.servicio;
 public interface PuntuacionService {
     void agregarPuntuacion(Integer id_usuario, Integer id_cancion, Integer puntuacion);//si la puntuacion existe no debo agregar otra
     void eliminarPuntuacion(Integer id_puntuacion);//por ejemplo si la puntuacion es 0, debo eliminarla, aun que deberia existir el valor, 0, es decir me parece mediocre
-    void modificarPuntuacion(Integer id_usuario, Integer id_cancion, Integer puntuacion);
+    void modificarPuntuacion(Integer id_puntuacion, Integer newPuntuacion);//aun que temabien podria llegar a la puntuacion a travez del id
 }
