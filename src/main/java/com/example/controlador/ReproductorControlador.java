@@ -21,6 +21,7 @@ import com.example.repositorio.ArtistaRepositorio;
 import com.example.repositorio.AlbumRepositorio;
 import com.example.repositorio.CancionRepositorio;
 
+import com.example.servicio.CancionService;
 
 @RestController
 public class ReproductorControlador {
@@ -52,4 +53,13 @@ public class ReproductorControlador {
 		return albumRepositorio.findAll();
 	}
 
+    //lo anterior no deberia estar
+    @Autowired
+    CancionService cancionService;
+
+    @RequestMapping(value = "/canciones", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Cancion> canciones(){
+        return cancionService.canciones();
+    }
 }

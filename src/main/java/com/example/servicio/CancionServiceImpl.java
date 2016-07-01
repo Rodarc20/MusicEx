@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class CancionServiceImpl implements CancionService{
     CancionRepositorio cancionRepositorio;
@@ -59,5 +61,10 @@ public class CancionServiceImpl implements CancionService{
         cancion.setPuntuacion(puntuacionRepositorio.puntuacionCancion(cancion)/puntuacionRepositorio.cantidadPuntuacionesCancion(cancion));
         cancionRepositorio.save(cancion);
         //calcular puntuacion, deberia tener un tabla puntuaciones
+    }
+
+    @Override
+    public List<Cancion> canciones(){
+        return cancionRepositorio.findAll();
     }
 }
