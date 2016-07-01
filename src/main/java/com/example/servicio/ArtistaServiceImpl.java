@@ -30,6 +30,11 @@ public class ArtistaServiceImpl implements ArtistaService{
         artistaRepositorio.save(artista);
     }
 
+    @Transactional
+    @Override
+    public void agregarArtista(Artista artista){
+        artistaRepositorio.save(artista);
+    }
     @Override
     public void eliminarArtista(Integer id_artista){//en toeira no deberia poder elimina un artista que tiene albunes, primero debo eliminar los albums
         artistaRepositorio.delete(id_artista);

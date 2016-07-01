@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Artistas</title>
+    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module('myApp', []);
+        app.controller('artistaController', function($scope, $http) {
+            $http.post("artista", '{nombre: "artista1", descripcion: "probando", path_foto: "dir"}').success(function (response){
+            });
+            $http.get("artitstas").success(function(response){
+                $scope.artistas2 = response;
+            });
+        });
+    </script>
+</head>
+<body>
+<h2>AngularJS Sample Application</h2>
+<div ng-app="myApp" ng-controller="artistaController">
+    <h3>Artistas</h3>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Path</th>
+        </tr>
+        <tr ng-repeat = "artista in artistas2">
+            <td>{{ artista.nombre }}</td>
+            <td>{{ artista.descripcion }}</td>
+            <td>{{ artista.path_foto }}</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

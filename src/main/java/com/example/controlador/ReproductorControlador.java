@@ -22,6 +22,7 @@ import com.example.repositorio.AlbumRepositorio;
 import com.example.repositorio.CancionRepositorio;
 
 import com.example.servicio.CancionService;
+import com.example.servicio.ArtistaService;
 
 @RestController
 public class ReproductorControlador {
@@ -40,10 +41,15 @@ public class ReproductorControlador {
 		return artistaRepositorio.findAll();
 	}
 
+    @Autowired
+    ArtistaService artistaService;
+
 	@RequestMapping(value = "/artista", method = RequestMethod.POST)
 	@ResponseBody
 	public Artista guardarArtista(@RequestBody Artista artista) {
-		return artistaRepositorio.save(artista);
+        artistaService.agregarArtista(artista);
+        return artista;
+		//return artistaRepositorio.save(artista);
 	}
 
 	//@RequestMapping("/cursos")
