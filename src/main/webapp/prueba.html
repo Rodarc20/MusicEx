@@ -8,10 +8,10 @@
     <script type="text/javascript">
         var app = angular.module('myApp', []);
         app.controller('artistaController', function($scope, $http) {
-            $http.post("artista", '{nombre: "artista1", descripcion: "probando", path_foto: "dir"}').success(function (response){
+            $http.post("artista", '{"nombre": "artista1", "descripcion": "probando", "pathFoto": "dir"}').success(function (response){
             });
-            $http.get("artitstas").success(function(response){
-                $scope.artistas2 = response;
+            $http.get("artistas").success(function(response){
+                $scope.artistas = response;
             });
         });
     </script>
@@ -26,10 +26,10 @@
             <th>Descripcion</th>
             <th>Path</th>
         </tr>
-        <tr ng-repeat = "artista in artistas2">
+        <tr ng-repeat = "artista in artistas">
             <td>{{ artista.nombre }}</td>
             <td>{{ artista.descripcion }}</td>
-            <td>{{ artista.path_foto }}</td>
+            <td>{{ artista.pathFoto }}</td>
         </tr>
     </table>
 </div>

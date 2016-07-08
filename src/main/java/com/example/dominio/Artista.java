@@ -14,15 +14,15 @@ public class Artista {
     @Id
     @SequenceGenerator(name="Artista_ID_GENERATOR", sequenceName="Artista_ID_SEQ")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Artista_ID_GENERATOR")
-    private Integer id_artista;
+    private Integer idArtista;
     private String nombre;
     private String descripcion;
-    private String path_foto;
+    private String pathFoto;
     private Integer seguidores;
     private Integer puntuacion;
 
-    public Integer getId_artista() {
-        return id_artista;
+    public Integer getIdArtista() {
+        return idArtista;
     }
 
     public void setNombre(String nombre){
@@ -41,12 +41,12 @@ public class Artista {
         return this.descripcion;
     }
 
-    public void setPath_foto(String path_foto){
-        this.path_foto = path_foto;
+    public void setPathFoto(String pathFoto){
+        this.pathFoto = pathFoto;
     }
 
-    public String getPath_foto(){
-        return this.path_foto;
+    public String getPathFoto(){
+        return this.pathFoto;
     }
 
     public void setSeguidores(Integer seguidores){
@@ -67,10 +67,10 @@ public class Artista {
 
     public Artista(){}
 
-    public Artista(String nombre, String descripcion, String path_foto){
+    public Artista(String nombre, String descripcion, String pathFoto){
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.path_foto = path_foto;
+        this.pathFoto = pathFoto;
         this.seguidores = 0;
         this.puntuacion = 0;
     }

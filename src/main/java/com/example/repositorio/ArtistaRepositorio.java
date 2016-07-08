@@ -10,5 +10,5 @@ import com.example.dominio.Artista;
 
 public interface ArtistaRepositorio extends CrudRepository<Artista, Integer>{
     List<Artista> findAll();
-    Artista findOne(Integer id_artista);
+    Artista findOne(Integer idArtista);
 }

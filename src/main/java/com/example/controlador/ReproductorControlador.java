@@ -26,38 +26,44 @@ import com.example.servicio.ArtistaService;
 
 @RestController
 public class ReproductorControlador {
-	@Autowired
+	/*@Autowired
 	ArtistaRepositorio artistaRepositorio;
 
 	@Autowired
 	AlbumRepositorio albumRepositorio;
 
 	@Autowired
-	CancionRepositorio cancionRepositorio;
+	CancionRepositorio cancionRepositorio;*/
 
-	@RequestMapping("/artistas")
+	/*@RequestMapping("/artistas")
 	@ResponseBody
 	public List<Artista> artistas() {
 		return artistaRepositorio.findAll();
 	}
-
+*/
     @Autowired
     ArtistaService artistaService;
 
+    @RequestMapping("/artistas")
+    @ResponseBody
+    public List<Artista> artistas() {
+        //return artistaRepositorio.findAll();
+        return artistaService.all();
+    }
+    //esta funcoin esta funcionando
 	@RequestMapping(value = "/artista", method = RequestMethod.POST)
 	@ResponseBody
 	public Artista guardarArtista(@RequestBody Artista artista) {
-        artistaService.agregarArtista(artista);
-        return artista;
+        return artistaService.agregarArtista(artista);
 		//return artistaRepositorio.save(artista);
 	}
 
 	//@RequestMapping("/cursos")
-	@RequestMapping(value = "/albums", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/albums", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Album> albums() {
 		return albumRepositorio.findAll();
-	}
+	}*/
 
     //lo anterior no deberia estar
     @Autowired
