@@ -13,5 +13,6 @@ public interface ArtistaService {
     void eliminarArtista(Integer idArtista);// o en realidad sea otra la logica
     void incrementarSeguidores(Integer idArtista);//el incremento siempre es de 1
     void calcularPuntuacion(Integer idArtista);
+    Artista verArtista(Integer idArtista);
     List<Artista> all();
 }

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Artistas</title>
+	<link rel="stylesheet" href="WindowsWebMusicc.css">
+	<link rel="stylesheet" href="style2.css">
+	<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+
+	<script type="text/javascript">
+		var app = angular.module('myApp', []);
+		app.controller('artistaController', function($scope, $http) {
+			$http.get("artista/50").success(function(response){
+				$scope.artista = response;
+			});
+		});
+	</script>
+</head>
+<body id="bodyArtista">	
+	<div id="principal">
+		<div id="cabecera">
+			<img id="logotipo1" alt="MusicEx" src="imagenes/img/logotipo.png"/>
+			<ul id="menu">
+			  <li><a href="/html/default.asp"><i class="icon icon-home"></i>  Inicio</a></li>
+			  <li><a href="/css/default.asp"><i class="icon icon-drawer2"></i>  Explorar</a></li>
+			  <li><a href="/js/default.asp"><i class="icon icon-list2"></i>  Mi Musica</a></li>
+			  <li><a href="/php/default.asp"><i class="icon icon-bubbles"></i>  Mensajes</a></li>
+			  <li><a href="/php/default.asp"><i class="icon icon-users"></i>  Social</a></li>
+			</ul>
+		</div>
+		<div id="ColumnaIzquierda">
+			<div class="search_bar">
+				<a href="#" class=""></a>
+				<input id="buscador" type="text" name="buscar" placeholder="&#128269; Busca en MusicEx">
+			</div>
+			<ul id="menu2">
+			  <li><a href="Artistas.html"><i class="icon icon-user-tie"></i>  Artistas</a></li>
+			  <li><a href="Albunes.html"><i class="icon icon-books"></i>  Albunes</a></li>
+			  <li><a href="Canciones.html"><i class="icon icon-music"></i>  Canciones</a></li>
+			  <li><a href="MyPlayMusic.html"><i class="icon icon-list2"></i>  Play Lists</a></li>
+			  <li><a href="Radios.html"><i class="icon icon-podcast"></i>  Radios</a></li>
+			</ul>
+			<ul id="menu2">
+			  <li><a href="/html/default.asp"><i class="icon icon-cogs"></i>  Configuración</a></li>
+			</ul>
+			
+			
+		</div>
+		<div ng-app="myApp" ng-controller="artistaController">
+		<div id="Cuerpo">
+			<div id="CuerpoCabecera">
+				<img id="iconoPlayList" alt="MusicEx" src="imagenes/img/playlist.png"/>
+				<h2 id="TituloPagina">{{ artista.nombre }}</h2>
+				<input type="button" value="&#9654; Reproducir" id="botonReproducir" onclick="#">
+				<input type="button" value="&#10003; Seguir" id="botonReproducir" onclick="#">
+				<input type="button" value="&#10010; Add" id="botonReproducir" onclick="#">
+				<input type="button" value="&#8651; Share" id="botonReproducir" onclick="#">
+				<input type="button" value="&#6686; More" id="botonReproducir" onclick="#">
+			</div>
+			<div id="CuerpoCuerpo">
+				<p>Albums</p>
+
+
+			</div>
+			<div id="CuerpoComentarios">
+				<h2 id="comentarios">Comentarios:</h2>
+
+				
+			
+			
+			</div>
+		</div>
+		</div>
+		<div id="ColumnaDerecha">
+			<div id="player">
+			<audio src="" controls id="audioPlayer">
+				Hola, tu navegador no está actualizado y no puede mostrar este contenido.
+			</audio>
+			</div>
+			<ul id="playlist">
+				<li><a href="Musica/PayPhone.mp3">Play Phone</a></li>
+				<li><a href="Musica/PayPhone.mp3">Play Phone</a></li>
+				<li><a href="Musica/PayPhone.mp3">Play Phone</a></li>
+				<li><a href="Musica/PayPhone.mp3">Play Phone</a></li>
+			</ul>
+			<script src="http://code.jquery.com/jquery-2.2.0.js">
+			</script>
+			<script>
+				audioPlayer();
+				function audioPlayer(){
+		            var currentSong = 0;
+		            $("#audioPlayer")[0].src = $("#playlist li a")[0];
+		            $("#audioPlayer")[0].play();
+		            $("#playlist li a").click(function(e){
+		               e.preventDefault(); 
+		               $("#audioPlayer")[0].src = this;
+		               $("#audioPlayer")[0].play();
+		               $("#playlist li").removeClass("current-song");
+		                currentSong = $(this).parent().index();
+		                $(this).parent().addClass("current-song");
+		            });
+		            
+		            $("#audioPlayer")[0].addEventListener("ended", function(){
+		               currentSong++;
+		                if(currentSong == $("#playlist li a").length)
+		                    currentSong = 0;
+		                $("#playlist li").removeClass("current-song");
+		                $("#playlist li:eq("+currentSong+")").addClass("current-song");
+		                $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
+		                $("#audioPlayer")[0].play();
+		            });
+		        }
+			</script>
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+</body>
+</html>

@@ -44,14 +44,14 @@ public class ReproductorControlador {
     @Autowired
     ArtistaService artistaService;
 
-    @RequestMapping("/artistas")
+    @RequestMapping("/artistas2")
     @ResponseBody
     public List<Artista> artistas() {
         //return artistaRepositorio.findAll();
         return artistaService.all();
     }
     //esta funcoin esta funcionando
-	@RequestMapping(value = "/artista", method = RequestMethod.POST)
+	@RequestMapping(value = "/artista2", method = RequestMethod.POST)
 	@ResponseBody
 	public Artista guardarArtista(@RequestBody Artista artista) {
         return artistaService.agregarArtista(artista);

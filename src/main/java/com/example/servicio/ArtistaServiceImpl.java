@@ -13,7 +13,6 @@ import java.util.List;
 
 @Service
 public class ArtistaServiceImpl implements ArtistaService{
-    @Autowired
     ArtistaRepositorio artistaRepositorio;
 
     @Autowired
@@ -53,6 +52,10 @@ public class ArtistaServiceImpl implements ArtistaService{
     @Override
     public void calcularPuntuacion(Integer idArtista){
         //calcular
+    }
+    @Override
+    public Artista verArtista(Integer idArtista){
+        return artistaRepositorio.findOne(idArtista);
     }
     @Override
     public List<Artista> all(){

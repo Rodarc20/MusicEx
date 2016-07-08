@@ -5,6 +5,7 @@ package com.example.servicio;
  */
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,12 @@ public class AlbumServiceImpl implements AlbumService{
     @Override
     public void calcularPuntuacion(Integer id_album){
         //tabla puntuaciones,no se si diferente o igual
+    }
+
+    @Override
+    public List<Album> albumArtista(Integer idArtista){
+        Artista artista = artistaRepositorio.findOne(idArtista);
+        return albumRepositorio.findByArtista(artista);
     }
 
 }
