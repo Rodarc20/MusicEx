@@ -12,23 +12,23 @@ public class Playlist {
     @Id
     @SequenceGenerator(name="Playlist_ID_GENERATOR", sequenceName="Playlist_ID_SEQ")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Playlist_ID_GENERATOR")
-    private Integer id_playlist;
+    private Integer idPlaylist;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
     private String titulo;
     private Date fecha;
 
     @ManyToMany
-    @JoinTable(name = "playlist_cancion", joinColumns = @JoinColumn(name = "id_cancion"), inverseJoinColumns = @JoinColumn(name = "id_playlist"))
+    @JoinTable(name = "playlist_cancion", joinColumns = @JoinColumn(name = "idCancion"), inverseJoinColumns = @JoinColumn(name = "idPlaylist"))
     private Set<Cancion> canciones;
 
     private Integer seguidores;
     private Integer puntuacion;
 
-    public Integer getId_playlist() {
-        return id_playlist;
+    public Integer getIdPlaylist() {
+        return idPlaylist;
     }
 
     public void setUsuario(Usuario usuario) {

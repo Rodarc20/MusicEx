@@ -11,14 +11,14 @@ public class Puntuacion {//cancion
     @Id
     @SequenceGenerator(name="Comentario_ID_GENERATOR", sequenceName="Comentario_ID_SEQ")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Comentario_ID_GENERATOR")
-    private Integer id_puntuacion;
+    private Integer idPuntuacion;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_cancion")
+    @JoinColumn(name = "idCancion")
     private Cancion cancion;
     private Date fecha;
     private Integer puntuacion;//0-10
@@ -64,7 +64,7 @@ public class Puntuacion {//cancion
         this.fecha = fecha;
     }
 
-    public Integer getId_puntuacion() {
-        return id_puntuacion;
+    public Integer getIdPuntuacion() {
+        return idPuntuacion;
     }
 }

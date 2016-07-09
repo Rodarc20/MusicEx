@@ -30,9 +30,9 @@ public class ComentarioServiceImpl implements ComentarioService{
 
     @Transactional
     @Override
-    public void agregarComentario(Integer id_usuario, Integer id_album, String comentario){
-        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
-        Album album = albumRepositorio.findOne(id_album);
+    public void agregarComentario(Integer idUsuario, Integer idAlbum, String comentario){
+        Usuario usuario = usuarioRepositorio.findOne(idUsuario);
+        Album album = albumRepositorio.findOne(idAlbum);
         Comentario coment = new Comentario();
         coment.setUsuario(usuario);
         coment.setAlbum(album);
@@ -42,13 +42,13 @@ public class ComentarioServiceImpl implements ComentarioService{
     }
 
     @Override
-    public void eliminarComentario(Integer id_comentario){
-        comentarioRepositorio.delete(id_comentario);
+    public void eliminarComentario(Integer idComentario){
+        comentarioRepositorio.delete(idComentario);
     }
 
     @Override
-    public void editarComentario(Integer id_comentario, String comentario){
-        Comentario coment = comentarioRepositorio.findOne(id_comentario);
+    public void editarComentario(Integer idComentario, String comentario){
+        Comentario coment = comentarioRepositorio.findOne(idComentario);
         coment.setComentario(comentario);
         comentarioRepositorio.save(coment);
     }

@@ -29,9 +29,9 @@ public class PuntuacionServiceImpl implements PuntuacionService{
     }
     @Transactional
     @Override
-    public void agregarPuntuacion(Integer id_usuario, Integer id_cancion, Integer puntuacion) {
-        Cancion cancion = cancionRepositorio.findOne(id_cancion);
-        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+    public void agregarPuntuacion(Integer idUsuario, Integer idCancion, Integer puntuacion) {
+        Cancion cancion = cancionRepositorio.findOne(idCancion);
+        Usuario usuario = usuarioRepositorio.findOne(idUsuario);
         Puntuacion punt = new Puntuacion();
         punt.setUsuario(usuario);
         punt.setCancion(cancion);
@@ -41,13 +41,13 @@ public class PuntuacionServiceImpl implements PuntuacionService{
     }
 
     @Override
-    public void eliminarPuntuacion(Integer id_puntuacion) {
-        puntuacionRepositorio.delete(id_puntuacion);
+    public void eliminarPuntuacion(Integer idPuntuacion) {
+        puntuacionRepositorio.delete(idPuntuacion);
     }
 
     @Override
-    public void modificarPuntuacion(Integer id_puntuacion, Integer newPuntuacion) {
-        Puntuacion puntuacion = puntuacionRepositorio.findOne(id_puntuacion);
+    public void modificarPuntuacion(Integer idPuntuacion, Integer newPuntuacion) {
+        Puntuacion puntuacion = puntuacionRepositorio.findOne(idPuntuacion);
         puntuacion.setPuntuacion(newPuntuacion);
         puntuacionRepositorio.save(puntuacion);
     }

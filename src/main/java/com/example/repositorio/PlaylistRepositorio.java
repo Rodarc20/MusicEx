@@ -10,5 +10,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PlaylistRepositorio extends CrudRepository<Playlist, Integer>{
     List<Playlist> findAll();
-    Playlist findOne(Integer id_playlist);
+    Playlist findOne(Integer idPlaylist);
 }

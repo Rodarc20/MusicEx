@@ -12,20 +12,20 @@ public class Cancion {
     @Id
     @SequenceGenerator(name="Cancion_ID_GENERATOR", sequenceName="Cancion_ID_SEQ")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Cancion_ID_GENERATOR")
-    private Integer id_cancion;
+    private Integer idCancion;
     private String titulo;
     private String path;
     private Integer numero;
     //private Integer id_album;
     @ManyToOne
-    @JoinColumn(name = "id_album")
+    @JoinColumn(name = "idAlbum")
     private Album album;
 
     @ManyToMany (mappedBy = "canciones")
     private Set<Playlist> playlists;
     //private Integer id_artista;//quiza no sea necesario
     private Integer duracion;
-    private Integer numero_seguidores;
+    private Integer numeroSeguidores;
     private Integer puntuacion;
     private Integer reproducciones;
 
@@ -37,8 +37,8 @@ public class Cancion {
         return this.titulo;
     }
 
-    public Integer getId_cancion(){
-        return this.id_cancion;
+    public Integer getIdCancion(){
+        return this.idCancion;
     }
 
     public void setPath(String path){
@@ -81,12 +81,12 @@ public class Cancion {
         return this.duracion;
     }
 
-    public void setNumero_seguidores(Integer numero_seguidores){
-        this.numero_seguidores = numero_seguidores;
+    public void setNumeroSeguidores(Integer numeroSeguidores){
+        this.numeroSeguidores = numeroSeguidores;
     }
 
-    public Integer getNumero_seguidores(){
-        return this.numero_seguidores;
+    public Integer getNumeroSeguidores(){
+        return this.numeroSeguidores;
     }
 
     public void setPuntuacion(Integer puntuacion){
@@ -112,7 +112,7 @@ public class Cancion {
         this.numero = numero;
         this.album = album;
         this.duracion = duracion;
-        this.numero_seguidores = 0;
+        this.numeroSeguidores = 0;
         this.puntuacion = 0;
         this.reproducciones = 0;
     }

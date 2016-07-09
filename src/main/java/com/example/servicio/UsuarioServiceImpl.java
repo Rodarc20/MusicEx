@@ -25,43 +25,47 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Transactional
     @Override
-    public void agregarUsuario(String username, String password, String email, String nombre, String apellido, Date fecha_nacimineto, String path_foto_perfil){
+    public void agregarUsuario(String username, String password, String email, String nombre, String apellido, Date fechaNacimineto, String pathFotoPerfil){
         Usuario usuario = new Usuario();
         usuario.setUsername(username);
         usuario.setPassword(password);
         usuario.setEmail(email);
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
-        usuario.setFecha_nacimiento(fecha_nacimineto);
-        usuario.setPath_foto_perfil(path_foto_perfil);
-        usuario.setFecha_creacion(new Date());
+        usuario.setFechaNacimiento(fechaNacimineto);
+        usuario.setPathFotoPerfil(pathFotoPerfil);
+        usuario.setFechaCreacion(new Date());
         usuarioRepositorio.save(usuario);
     }
 
     @Override
-    public void eliminarUsuario(Integer id_usuario){
-        usuarioRepositorio.delete(id_usuario);
+    public void eliminarUsuario(Integer idUsuario){
+        usuarioRepositorio.delete(idUsuario);
     }
 
     @Override
-    public void cambiarFotoPerfil(Integer id_usuario, String path_foto_perfil){
-        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
-        String path_eliminar = usuario.getPath_foto_perfil();//deberia eliminar esta foto anterior, de mi base de datos, aun no se como trabajaremos las imagenes
-        usuario.setPath_foto_perfil(path_foto_perfil);
+    public void cambiarFotoPerfil(Integer idUsuario, String pathFotoPerfil){
+        Usuario usuario = usuarioRepositorio.findOne(idUsuario);
+        String pathEliminar = usuario.getPathFotoPerfil();//deberia eliminar esta foto anterior, de mi base de datos, aun no se como trabajaremos las imagenes
+        usuario.setPathFotoPerfil(pathFotoPerfil);
         usuarioRepositorio.save(usuario);
     }
 
     @Override
-    public void cambiarPassword(Integer id_usuario, String password){
-        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+    public void cambiarPassword(Integer idUsuario, String password){
+        Usuario usuario = usuarioRepositorio.findOne(idUsuario);
         usuario.setPassword(password);
         usuarioRepositorio.save(usuario);
     }
     @Override
-    public void cambiarEmail(Integer id_usuario, String email){
-        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+    public void cambiarEmail(Integer idUsuario, String email){
+        Usuario usuario = usuarioRepositorio.findOne(idUsuario);
         usuario.setEmail(email);
         usuarioRepositorio.save(usuario);
+    }
+    @Override
+    public Usuario verUsuario(Integer idUsuario){
+        return usuarioRepositorio.findOne(idUsuario);
     }
     /*@Override
     public void crearPlaylist(Integer id_usuario, String titulo){

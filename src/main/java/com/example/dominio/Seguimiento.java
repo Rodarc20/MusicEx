@@ -11,14 +11,14 @@ public class Seguimiento {//usuario1 sigue a usuario2, no visceversa
     @Id
     @SequenceGenerator(name="Comentario_ID_GENERATOR", sequenceName="Comentario_ID_SEQ")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Comentario_ID_GENERATOR")
-    private Integer id_seguimiento;
+    private Integer idSeguimiento;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario1")
+    @JoinColumn(name = "idUsuario1")
     private Usuario usuario1;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario2")
+    @JoinColumn(name = "idUsuario2")
     private Usuario usuario2;
 
     private Date fecha;
@@ -55,7 +55,7 @@ public class Seguimiento {//usuario1 sigue a usuario2, no visceversa
         this.fecha = fecha;
     }
 
-    public Integer getId_seguimiento() {
-        return id_seguimiento;
+    public Integer getIdSeguimiento() {
+        return idSeguimiento;
     }
 }

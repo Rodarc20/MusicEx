@@ -10,5 +10,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UsuarioRepositorio extends CrudRepository<Usuario, Integer> {
     List<Usuario> findAll();
-    Usuario findOne(Integer id_usuario);
+    Usuario findOne(Integer idUsuario);
 }

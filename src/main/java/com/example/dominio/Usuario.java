@@ -15,18 +15,18 @@ public class Usuario {
     @Id
     @SequenceGenerator(name="Usuario_ID_GENERATOR", sequenceName="Usuario_ID_SEQ")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Usuario_ID_GENERATOR")
-    private Integer id_usuario;
+    private Integer idUsuario;
     private String username;
     private String password;
     private String email;
     private String nombre;
     private String apellido;
-    private Date fecha_nacimiento;
-    private String path_foto_perfil;
-    private Date fecha_creacion;
+    private Date fechaNacimiento;
+    private String pathFotoPerfil;
+    private Date fechaCreacion;
 
-    public Integer getId_usuario() {
-        return id_usuario;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
     public void setUsername(String username) {
@@ -69,40 +69,40 @@ public class Usuario {
         return apellido;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Date getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setPath_foto_perfil(String path_foto_perfil) {
-        this.path_foto_perfil = path_foto_perfil;
+    public void setPathFotoPerfil(String pathFotoPerfil) {
+        this.pathFotoPerfil = pathFotoPerfil;
     }
 
-    public String getPath_foto_perfil() {
-        return path_foto_perfil;
+    public String getPathFotoPerfil() {
+        return pathFotoPerfil;
     }
 
-    public void setFecha_creacion(Date fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
-    public Date getFecha_creacion() {
-        return fecha_creacion;
+    public Date getFechaCreacion() {
+        return fechaCreacion;
     }
 
     public Usuario(){}
 
-    public Usuario(String username, String password, String email, String nombre, String apellido, Date fecha_nacimineto, String path_foto_perfil){
+    public Usuario(String username, String password, String email, String nombre, String apellido, Date fechaNacimineto, String pathFotoPerfil){
         this.username = username;
         this.password = password;
         this.email = email;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fecha_nacimiento = fecha_nacimineto;
-        this.path_foto_perfil = path_foto_perfil;
-        this.fecha_creacion = new Date();
+        this.fechaNacimiento = fechaNacimineto;
+        this.pathFotoPerfil = pathFotoPerfil;
+        this.fechaCreacion = new Date();
     }
 }

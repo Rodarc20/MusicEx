@@ -30,9 +30,9 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     @Transactional
     @Override
-    public void agregarPlaylist(Integer id_usuario, String titulo){
+    public void agregarPlaylist(Integer idUsuario, String titulo){
         Playlist playlist = new Playlist();
-        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+        Usuario usuario = usuarioRepositorio.findOne(idUsuario);
         playlist.setUsuario(usuario);
         playlist.setTitulo(titulo);
         playlist.setFecha(new Date());
@@ -41,23 +41,33 @@ public class PlaylistServiceImpl implements PlaylistService{
         playlistRepositorio.save(playlist);
     }
 
+    @Transactional
     @Override
-    public void eliminarPlaylist(Integer id_playlist){
-        playlistRepositorio.delete(id_playlist);
+    public void agregarPlaylist(Playlist playlist){
+        playlistRepositorio.save(playlist);
+    }
+    @Override
+    public void eliminarPlaylist(Integer idPlaylist){
+        playlistRepositorio.delete(idPlaylist);
     }
 
     @Transactional
     @Override
-    public void agregarCancionEnPlaylist(Integer id_playlist, Integer id_cancion){
-        Playlist playlist = playlistRepositorio.findOne(id_playlist);
-        Cancion cancion = cancionRepositorio.findOne(id_cancion);
+    public void agregarCancionEnPlaylist(Integer idPlaylist, Integer idCancion){
+        Playlist playlist = playlistRepositorio.findOne(idPlaylist);
+        Cancion cancion = cancionRepositorio.findOne(idCancion);
         playlist.addCancion(cancion);
     }
 
     @Override
-    public void eliminarCancionEnPlaylist(Integer id_playlist, Integer id_cancion){
-        Playlist playlist = playlistRepositorio.findOne(id_playlist);
-        Cancion cancion = cancionRepositorio.findOne(id_cancion);
+    public void eliminarCancionEnPlaylist(Integer idPlaylist, Integer idCancion){
+        Playlist playlist = playlistRepositorio.findOne(idPlaylist);
+        Cancion cancion = cancionRepositorio.findOne(idCancion);
         playlist.deleteCancion(cancion);
+    }
+
+    @Override
+    public Playlist verPlaylist(Integer idPaylist){
+        return playlistRepositorio.findOne(idPaylist);
     }
 }

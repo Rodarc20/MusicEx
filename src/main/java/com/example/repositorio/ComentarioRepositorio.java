@@ -10,5 +10,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ComentarioRepositorio extends CrudRepository<Comentario, Integer>{
     List<Comentario> findAll();
-    Comentario findOne(Integer id_comentario);
+    Comentario findOne(Integer idComentario);
 }

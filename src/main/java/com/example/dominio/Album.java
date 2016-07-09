@@ -11,21 +11,21 @@ public class Album {
     @Id
     @SequenceGenerator(name="Album_ID_GENERATOR", sequenceName="Album_ID_SEQ")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Album_ID_GENERATOR")
-    private Integer id_album;
+    private Integer idAlbum;
     private String titulo;
     //private Integer id_artista;
     @ManyToOne
-    @JoinColumn(name="id_artista")
+    @JoinColumn(name="idArtista")
     private Artista artista;
-    private String path_foto;
+    private String pathFoto;
     private Date fecha;
     private Integer seguidores;
     private Integer puntuacion;
     //private genero; // este se debe con una tabla intermedia;
 
 
-    public Integer getId_album() {
-        return id_album;
+    public Integer getIdAlbum() {
+        return idAlbum;
     }
 
     public void setTitulo(String titulo){
@@ -44,12 +44,12 @@ public class Album {
         return artista;
     }
 
-    public void setPath_foto(String path_foto){
-        this.path_foto = path_foto;
+    public void setPathFoto(String pathFoto){
+        this.pathFoto = pathFoto;
     }
 
-    public String getPath_foto(){
-        return this.path_foto;
+    public String getPathFoto(){
+        return this.pathFoto;
     }
 
     public void setFecha(Date fecha){
@@ -86,10 +86,10 @@ public class Album {
         this.seguidores = 0;
         this.puntuacion = 0;
     }*/
-    public Album (String titulo, Artista artista, String path_foto, Date fecha){
+    public Album (String titulo, Artista artista, String pathFoto, Date fecha){
         this.titulo = titulo;
         this.artista = artista;
-        this.path_foto = path_foto;
+        this.pathFoto = pathFoto;
         this.fecha = fecha;
         this.seguidores = 0;
         this.puntuacion = 0;

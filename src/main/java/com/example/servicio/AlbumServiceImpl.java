@@ -34,12 +34,12 @@ public class AlbumServiceImpl implements AlbumService{
 
     @Transactional
     @Override
-    public void agregarAlbum(Integer id_artista, String titulo, String path_foto, Date fecha){// se supone que ya tengo la foto almacenada en una carpeta especial
-        Artista artista = artistaRepositorio.findOne(id_artista);
+    public void agregarAlbum(Integer idArtista, String titulo, String pathFoto, Date fecha){// se supone que ya tengo la foto almacenada en una carpeta especial
+        Artista artista = artistaRepositorio.findOne(idArtista);
         Album album = new Album();//o podria usar el otro constructor, pero parace que la logica de negocios no usa constructores, seguir por ahora asi
         album.setArtista(artista);
         album.setTitulo(titulo);
-        album.setPath_foto(path_foto);
+        album.setPathFoto(pathFoto);
         album.setFecha(fecha);
         album.setSeguidores(0);
         album.setPuntuacion(0);
@@ -47,20 +47,20 @@ public class AlbumServiceImpl implements AlbumService{
     }
 
     @Override
-    public void eliminarAlbum(Integer id_album){//en teoria deberia recibi artista u titulo para eliminar, por ahroa recibire el codigo dl album
-        Album album = albumRepositorio.findOne(id_album);//al usar el codigo del album, esta linea es inecesaria, el repositorio tiene una opcionpara elimnar por codigo
+    public void eliminarAlbum(Integer idAlbum){//en teoria deberia recibi artista u titulo para eliminar, por ahroa recibire el codigo dl album
+        Album album = albumRepositorio.findOne(idAlbum);//al usar el codigo del album, esta linea es inecesaria, el repositorio tiene una opcionpara elimnar por codigo
         albumRepositorio.delete(album);
     }
 
     @Override
-    public void incrementarSeguidores(Integer id_album){
-        Album album = albumRepositorio.findOne(id_album);
+    public void incrementarSeguidores(Integer idAlbum){
+        Album album = albumRepositorio.findOne(idAlbum);
         album.setSeguidores(album.getSeguidores()+1);
         albumRepositorio.save(album);
     }
 
     @Override
-    public void calcularPuntuacion(Integer id_album){
+    public void calcularPuntuacion(Integer idAlbum){
         //tabla puntuaciones,no se si diferente o igual
     }
 

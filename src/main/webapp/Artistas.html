@@ -10,9 +10,13 @@
 	<script type="text/javascript">
 		var app = angular.module('myApp', []);
 		app.controller('artistaController', function($scope, $http) {
-			$http.get("artista/50").success(function(response){
+			$http.get("/artista/50").success(function(response){
 				$scope.artista = response;
 			});
+            $http.get("/artista/50/albums").success(function(response){
+                $scope.albums = response;
+            });
+            $resource.get
 		});
 	</script>
 </head>
@@ -59,6 +63,12 @@
 			</div>
 			<div id="CuerpoCuerpo">
 				<p>Albums</p>
+                <div ng-repeat = "album in albums">
+                    <h3>{{ album.titulo }}</h3>
+                    {{ album.fecha }}<br>
+                    {{ album.pathFoto }} <br>
+                </div>
+
 
 
 			</div>

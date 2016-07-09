@@ -12,14 +12,14 @@ public class Comentario {//Album
     @Id
     @SequenceGenerator(name="Comentario_ID_GENERATOR", sequenceName="Comentario_ID_SEQ")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Comentario_ID_GENERATOR")
-    private Integer id_comentario;
+    private Integer idComentario;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_album")
+    @JoinColumn(name = "idAlbum")
     private Album album;
 
     private String comentario;

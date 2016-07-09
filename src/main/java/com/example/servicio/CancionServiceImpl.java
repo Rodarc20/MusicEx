@@ -29,8 +29,8 @@ public class CancionServiceImpl implements CancionService{
 
     @Transactional
     @Override
-    public void agregarCancion(Integer id_album, String titulo, String path, Integer numero, Integer duracion){
-        Album album = albumRepositorio.findOne(id_album);
+    public void agregarCancion(Integer idAlbum, String titulo, String path, Integer numero, Integer duracion){
+        Album album = albumRepositorio.findOne(idAlbum);
         Cancion cancion = new Cancion();
         cancion.setAlbum(album);
         cancion.setTitulo(titulo);
@@ -38,26 +38,26 @@ public class CancionServiceImpl implements CancionService{
         cancion.setNumero(numero);
         cancion.setDuracion(duracion);
         cancion.setPuntuacion(0);
-        cancion.setNumero_seguidores(0);
+        cancion.setNumeroSeguidores(0);
         cancion.setReproducciones(0);
         cancionRepositorio.save(cancion);
     }
 
     @Override
-    public void eliminarCancion(Integer id_cancion){
-        cancionRepositorio.delete(id_cancion);
+    public void eliminarCancion(Integer idCancion){
+        cancionRepositorio.delete(idCancion);
     }
 
     @Override
-    public void incrementarSeguidores(Integer id_cancion){
-        Cancion cancion = cancionRepositorio.findOne(id_cancion);
-        cancion.setNumero_seguidores(cancion.getNumero_seguidores() + 1);
+    public void incrementarSeguidores(Integer idCancion){
+        Cancion cancion = cancionRepositorio.findOne(idCancion);
+        cancion.setNumeroSeguidores(cancion.getNumeroSeguidores() + 1);
         cancionRepositorio.save(cancion);
     }
 
     @Override
-    public void calcularPuntuacion(Integer id_cancion){
-        Cancion cancion = cancionRepositorio.findOne(id_cancion);
+    public void calcularPuntuacion(Integer idCancion){
+        Cancion cancion = cancionRepositorio.findOne(idCancion);
         cancion.setPuntuacion(puntuacionRepositorio.puntuacionCancion(cancion)/puntuacionRepositorio.cantidadPuntuacionesCancion(cancion));
         cancionRepositorio.save(cancion);
         //calcular puntuacion, deberia tener un tabla puntuaciones

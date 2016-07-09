@@ -27,9 +27,9 @@ public class SeguimientoServiceImpl implements SeguimientoService {
 
     @Transactional
     @Override
-    public void seguirUsuario(Integer id_usuario1, Integer id_usuario2) {
-        Usuario usuario1 = usuarioRepositorio.findOne(id_usuario1);
-        Usuario usuario2 = usuarioRepositorio.findOne(id_usuario2);
+    public void seguirUsuario(Integer idUsuario1, Integer idUsuario2) {
+        Usuario usuario1 = usuarioRepositorio.findOne(idUsuario1);
+        Usuario usuario2 = usuarioRepositorio.findOne(idUsuario2);
         Seguimiento seguimiento = new Seguimiento();
         seguimiento.setUsuario1(usuario1);
         seguimiento.setUsuario2(usuario2);
@@ -38,13 +38,13 @@ public class SeguimientoServiceImpl implements SeguimientoService {
     }
 
     @Override
-    public void noSeguirUsuario(Integer id_seguimiento) {
-        seguimientoRepositorio.delete(id_seguimiento);
+    public void noSeguirUsuario(Integer idSeguimiento) {
+        seguimientoRepositorio.delete(idSeguimiento);
     }
 
     @Override
-    public List<Usuario> usuariosSeguidos(Integer id_usuario){
-        Usuario usuario = usuarioRepositorio.findOne(id_usuario);
+    public List<Usuario> usuariosSeguidos(Integer idUsuario){
+        Usuario usuario = usuarioRepositorio.findOne(idUsuario);
         return seguimientoRepositorio.findByUsuario1(usuario);
     }
     /*@Override

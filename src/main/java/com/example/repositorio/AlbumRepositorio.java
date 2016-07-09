@@ -12,7 +12,7 @@ import com.example.dominio.Album;
 
 public interface AlbumRepositorio extends CrudRepository<Album, Integer>{
     List<Album> findAll();
-    Album findOne(Integer id_album);
+    Album findOne(Integer idAlbum);
     List<Album> findByArtista(Artista artista);
     @Query("select al from Album al where al.titulo = :titulo")//jpql
     Album buscarPorTitulo(String titulo);
