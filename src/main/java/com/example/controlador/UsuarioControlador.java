@@ -47,4 +47,13 @@ public class UsuarioControlador {
     public Playlist verPlaylist(@PathVariable(value = "idPlaylist") Integer idPlaylist){
         return playlistService.verPlaylist(idPlaylist);
     }
+
+    @RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)
+    @ResponseBody
+    public Usuario regsitrarUsuario(Usuario usuario){
+        usuarioService.agregarUsuario(usuario);
+        return usuario;
+    }
+
+
 }

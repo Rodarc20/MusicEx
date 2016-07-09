@@ -64,6 +64,11 @@ public class CancionServiceImpl implements CancionService{
     }
 
     @Override
+    public Cancion verCancion(Integer idCancion){
+        return cancionRepositorio.findOne(idCancion);
+    }
+
+    @Override
     public List<Cancion> canciones(){
         return cancionRepositorio.findAll();
     }

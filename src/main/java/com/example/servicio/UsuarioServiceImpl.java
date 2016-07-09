@@ -25,6 +25,12 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Transactional
     @Override
+    public void agregarUsuario(Usuario usuario){
+        usuarioRepositorio.save(usuario);
+    }
+
+    @Transactional
+    @Override
     public void agregarUsuario(String username, String password, String email, String nombre, String apellido, Date fechaNacimineto, String pathFotoPerfil){
         Usuario usuario = new Usuario();
         usuario.setUsername(username);

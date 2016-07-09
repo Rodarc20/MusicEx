@@ -8,11 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.dominio.Artista;
 import com.example.dominio.Album;
@@ -73,5 +69,11 @@ public class ReproductorControlador {
     @ResponseBody
     public List<Cancion> canciones(){
         return cancionService.canciones();
+    }
+
+    @RequestMapping(value = "/cancion/{idCancion}", method = RequestMethod.GET)
+    @ResponseBody
+    public Cancion verCancion(@PathVariable(value = "idCancion") Integer idCancion){
+        return cancionService.verCancion(idCancion);
     }
 }

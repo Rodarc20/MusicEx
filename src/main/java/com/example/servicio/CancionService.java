@@ -13,5 +13,6 @@ public interface CancionService {
     void eliminarCancion(Integer idCancion);
     void incrementarSeguidores(Integer idCancion);//el incremento siempre es de 1
     void calcularPuntuacion(Integer idCancion);
+    Cancion verCancion(Integer idCancion);
     List<Cancion> canciones();
 }
